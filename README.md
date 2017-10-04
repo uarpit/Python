@@ -1,2 +1,2 @@
 # Python
-This folder has all the python programs/proects
+This folder has all the python programs/projects
