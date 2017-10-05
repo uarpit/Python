@@ -34,29 +34,29 @@ def flatten(line):
     return (line[0],line[1][0],line[1][1][2],line[1][1][3])
 
 def main(sc):
-  	#Read additional_info file and parse it 
+    #Read additional_info file and parse it 
     ai_lines = sc.textFile("additional_info.csv").map(split).map(parse_ai).collect()
     #build a dictionary from additiona_info - use set function to remove duplicates
-	  dict_add = dict(set(tuple(row) for row in ai_lines))
+    dict_add = dict(set(tuple(row) for row in ai_lines))
     #broadcast the dictionary on cluster
-	  ai_lookup = sc.broadcast(dict_add)
+    ai_lookup = sc.broadcast(dict_add)
 
     #Read PartsCost file and parse it
-	  pc_lines = sc.textFile("PartsCost.csv").map(split).map(parse_pc)
+    pc_lines = sc.textFile("PartsCost.csv").map(split).map(parse_pc)
     #read the second column as key for grouping
-	  map_pc = pc_lines.map(lambda x: (x[1], x))
-	  #Reduce by key and return first row per key
+    map_pc = pc_lines.map(lambda x: (x[1], x))
+    #Reduce by key and return first row per key
     red_pc = map_pc.reduceByKey(unique_pc)
     red = red_pc.map(lambda x: x[1]).collect()
 	
-	  #Read PartNumber file and parse it
+    #Read PartNumber file and parse it
     pn_lines = sc.textFile("PartNumber.csv").map(split).collect()
-	  #Remove the duplicates by using set function
+    #Remove the duplicates by using set function
     un_pn = sc.parallelize(set(tuple(row) for row in pn_lines))
     #join PartNumber and PartCost 
-	  pc_pn = un_pn.join(red_pc)
+    pc_pn = un_pn.join(red_pc)
 
-	  #Return the required columns as output
+    #Return the required columns as output
     result = pc_pn.map(flatten)
 
 if __name__ == "__main__":
