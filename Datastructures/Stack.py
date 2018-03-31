@@ -1,3 +1,7 @@
+"""
+This program implements the basic stack data structure using python lists
+"""
+
 
 class Stack:
 
