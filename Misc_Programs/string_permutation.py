@@ -13,7 +13,6 @@ def strng_permt(str1, str2):
 
     for c in str1:
         ary1[ord(c) - 1] = ary1[ord(c) - 1] + 1
-
     for c in str2:
         ary2[ord(c) - 1] += 1
 
