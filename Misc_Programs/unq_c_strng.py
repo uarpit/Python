@@ -1,5 +1,5 @@
-#Program to check if the string has all unique charecters
-#without usingany additinal datastructures
+#Program to check if the string has all unique characters
+#without using any additinal datastructures
 
 def unq_c_strng(inpt):
     ary = []
