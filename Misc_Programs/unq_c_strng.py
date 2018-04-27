@@ -1,5 +1,8 @@
-#Program to check if the string has all unique characters
+#Program to check if the string has all unique characters given that string only contains alphabets
 #without using any additinal datastructures
+
+#Approach: This program creates a list such that each position stores a character from the string
+# If a character is already present at an index then it is proves non uniqueness in the string
 
 def unq_c_strng(inpt):
     ary = []
