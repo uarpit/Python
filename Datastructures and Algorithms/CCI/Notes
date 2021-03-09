@@ -1,0 +1,26 @@
+Timecomplexity - Python objects:
+    https://wiki.python.org/moin/TimeComplexity
+
+len function:
+    Objects keep track of their own length. The time to extract the length is small O(1)
+
+- Function to convert char to ascii value is ord()
+- Delete a key from python dictionary 
+ i) del dict[key]
+ ii) dict.pop(key) - this will return the value
+- To check if the key return a value use get method
+  dict.get('x',0) return 0 as defaul value if key is not found.
+  If you just give dict.get('x') then it will have None as default value
+ 
+ Note: Cannot run these during an iteration as the dictionary size change is not acceptable during an iteration (in for loop)
+ 
+- range function to get in reverse goes like this - range(high,low,-1)
+
+- Usally during the function calls default behaviour in python is copy by referece
+
+- zip function in python lets us iterate on two lists symultaniously 
+
+
+Bit Manipulation:
+XOR = subtract (behaves like modulus)
+
